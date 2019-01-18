@@ -60,12 +60,16 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: yuzy007
+# disqus_username: yuzy007
+disqus_username: false
 
 # Netease settings
 netease_comment: false
 
-
+# gitment settings
+comment_gitment_repo: https://github.com/yuzy007/yuzy007.github.io.git
+comment_gitment_clientId: 0b94631cb42b9da1c1e3
+comment_gitment_clientSecret: 715aad71c6dba392ba9585915022f0fc1334752b
 
 # Analytics settings
 # Baidu Analytics 
