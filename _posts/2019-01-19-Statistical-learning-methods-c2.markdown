@@ -8,7 +8,8 @@ catalog: true
 tags:
     - 统计学习方法
     - 李航
-    - 概论
+    - 感知机
+    - Perceptron
 ---
 
 > “What is a neural network? To get started, I'll explain a type of artificial neuron called a perceptron. Perceptrons were developed in the 1950s and 1960s by the scientist Frank Rosenblatt, inspired by earlier work by Warren McCulloch and Walter Pitts. Today, it's more common to use other models of artificial neurons - in this book, and in much modern work on neural networks, the main neuron model used is one called the sigmoid neuron. ”
