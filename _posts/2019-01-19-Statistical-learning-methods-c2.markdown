@@ -183,4 +183,5 @@ $$
 
 ##  其他参考资料：
 
-- http://neuralnetworksanddeeplearning.com/chap1.html
+- [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/chap1.html)
+

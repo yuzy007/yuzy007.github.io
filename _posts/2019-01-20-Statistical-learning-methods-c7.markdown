@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "《统计学习方法》读书笔记(七)"
+title:      "《统计学习方法》(李航)读书笔记(七)"
 subtitle:   "第7章 SVM"
 author:     "逸杯久"
 header-img: "img/post-bg-2015.jpg"
@@ -244,8 +244,7 @@ SMO算法要求解如下凸二次规划的对偶问题：
 
 
 
-
 ##  其他参考资料：
 
-- [干货 | 从超平面到SVM（一)](https://www.sohu.com/a/206572358_160850)
-- [Google机器学习 | 特征组合 (Feature Crosses)](https://developers.google.cn/machine-learning/crash-course/feature-crosses/video-lecture)
+- [干货 从超平面到SVM（一)](https://www.sohu.com/a/206572358_160850)
+- [Google机器学习  特征组合 (Feature Crosses)](https://developers.google.cn/machine-learning/crash-course/feature-crosses/video-lecture)
