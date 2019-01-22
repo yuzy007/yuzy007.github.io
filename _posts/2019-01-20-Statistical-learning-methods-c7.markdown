@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "《统计学习方法》(李航)读书笔记(七)"
+title:      "《统计学习方法》读书笔记(七)"
 subtitle:   "第7章 SVM"
 author:     "逸杯久"
 header-img: "img/post-bg-2015.jpg"
