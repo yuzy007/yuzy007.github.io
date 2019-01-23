@@ -2,7 +2,6 @@
 layout:     post
 title:      "《统计学习方法》(李航)读书笔记(一)"
 subtitle:   "第1章 统计学习方法概论"
-date:       2019-01-18 00:00:00
 author:     "逸杯久"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
