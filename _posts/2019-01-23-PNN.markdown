@@ -3,7 +3,7 @@ layout:     post
 title:      "基于感知机的手写数字识别神经网络"
 subtitle:   "简单的数字识别神经网络"
 author:     "逸杯久"
-header-img: "img/post-bg-2015.jpg"
+header-img: "img/post-bg-2019_1.jpg"
 catalog: true
 tags:
     - 神经网络
@@ -458,7 +458,7 @@ Epoch 29: 9650 / 10000
 
 ### 1.4.2 博主个人代码和环境部署
 
-**代码地址下载地址：**https://pan.baidu.com/s/1Q7Ta8aUJ3X_MOfe1nd-rPQ 
+**代码下载地址：**https://pan.baidu.com/s/1Q7Ta8aUJ3X_MOfe1nd-rPQ 
 
 **提取密码：**9uxu
 
