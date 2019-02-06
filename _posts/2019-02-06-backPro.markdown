@@ -1,0 +1,166 @@
+---
+layout:     post
+title:      "反向传播算法如何⼯作"
+subtitle:   ""
+author:     "逸杯久"
+header-img: "img/post-bg-2019_1.jpg"
+catalog: true
+tags:
+    - 神经网络
+    - 感知机
+    - Perceptrons
+    - neural network
+---
+
+> “Action speak louder than words. ”
+
+
+
+[TOC]
+
+# 1 反向传播
+
+**反向传播**的过程其实就是计算**代价函数**的梯度（求导计算）得过程。然后根据求得梯度，更新参数来降低代价。
+
+**代价函数**是是定义在整个训练集上的，是所有样本误差的平均，也就是损失函数的平均。
+
+**损失函数**是单个样本的误差。
+
+代价函数C和w的关系如下所示：
+    ![cross_func_1]({{ site.url }}/img/NN/backPro/cross_func_1.png)
+
+根据图片可知，常见的梯度下降法由于初始值不同，会落在不同的局部最小值上（而非全局最小值）。
+
+
+## 1.1 什么是前向传播和反向传播
+​	下面是3Blue1Brown的[深度学习之反向传播算法 上/下 Part 3 ver 0.9 beta](https://www.bilibili.com/video/av16577449)。里面生动讲解了方向传播的基本概念和计算过程，建议大家先看一下。
+<iframe iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=16577449&cid=27038097&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+**前向传播**方向：输入层 >> 隐藏层 >> 输出层，目的是输出目标结果，如下图所示:
+
+![forward_pro_1]({{ site.url }}/img/NN/backPro/forward_pro_1.png)
+
+**反向传播**方向：输出层（代价函数） >> 隐藏层 >> 输出层，目的是调整参数（w和b），如下图所示:
+
+![backPro_1]({{ site.url }}/img/NN/backPro/backPro_1.jpg)
+
+## 1.2 反向传播的计算
+
+​	使⽤ $$ w^{l}_{jk} $$ 表⽰从 (l - 1) 层的第 k 个神经元到第 l 层的第 j 个神经元的链接上的权重；使⽤ $$ b^{l}_j  $$ 和 $$ a^{l}_j  $$ 分别表⽰第 l 层第 j 个神经元的 偏置 和 激活值。下⾯的图清楚地解释了这样表⽰
+的含义： 设
+
+![backPro_2]({{ site.url }}/img/NN/backPro/backPro_2.png)
+
+![backPro_3]({{ site.url }}/img/NN/backPro/backPro_3.png)
+
+​	以感知机为例，采用梯度下降法，损失函数为平方损失函数（针对单个样本有 $$ Loss_x = \frac{1}{2} \|y-a^L \|^2 $$），则有:
+
+$$
+\begin{eqnarray} 
+  a^{l}_j = \sigma\left( \sum_k w^{l}_{jk} a^{l-1}_k + b^l_j \right),
+\tag{1}
+\end{eqnarray}
+$$
+
+$$
+\begin{eqnarray} 
+  a^{l} = \sigma(w^l a^{l-1}+b^l).
+\tag{2}\end{eqnarray}
+$$
+
+$$
+\begin{eqnarray}
+  C = \frac{1}{2n} \sum_x \|y(x)-a^L(x)\|^2,
+\tag{3}\end{eqnarray}
+$$
+
+​	设输出层误差为 $$\delta^L$$ ，则：
+$$
+\begin{eqnarray} 
+  \delta^L_j = \frac{\partial C}{\partial a^L_j} \sigma'(z^L_j).
+\tag{4}\end{eqnarray}
+$$
+​	令 $ \nabla_a C = \\{ \frac{\partial C}{\partial a^L_j} \   \| \  j \in J \\}$ （将$ \nabla_a C $ 看成L层上是 C 关于J个输出
+激活值的改变速度的集合，用向量表示 ），则公式（4）可推导出：
+$$
+\begin{eqnarray} 
+  \delta^L = \nabla_a C \odot \sigma'(z^L).
+\tag{5}\end{eqnarray}
+$$
+
+*注：⊙ 是Hadamard 乘积，表⽰按元素的乘积。*
+
+### 1.2.1 反向传播计算过程
+
+**步骤一：**公式（5）代入公式（3）这样就可以计算出最后一层（输出层）的误差：
+$$
+\begin{eqnarray} 
+  \delta^L = (a^L-y) \odot \sigma'(z^L).
+\tag{6}\end{eqnarray}
+$$
+得到最后一层的误差 $$\delta^L$$ ，再分别对 $$ b^l $$ 和 $$ w^l $$求导，可得到下面两个算式：
+$$
+\begin{eqnarray} 
+   \frac{\partial \delta^L}{\partial b^L} = \delta^L
+\tag{7}\end{eqnarray}
+$$
+$$
+\begin{eqnarray} 
+   \frac{\partial \delta^L}{\partial w^L} = \dot{(w^{L})^T}{\delta^L}
+\tag{8}\end{eqnarray}
+$$
+得到最后一层参数$$w^L$$和$$b^L$$的梯度。
+
+**步骤二：**L-1 层的的误差 $$\delta^{l-1}$$ 如下：
+$$
+\begin{eqnarray} 
+     \delta^{L-1} = ((w^{L})^T \delta^{L}) \odot \sigma'(z^{L-1}),
+   \tag{9}\end{eqnarray}
+$$
+
+   	代入公式（7）（8）可以得到倒数第二层参数$$w^{L-1}$$和$$b^{L-1}$$的梯度。
+
+**步骤三：**重复 步骤二 的过程，最后可以获得神经网络每一层关于参数$$w$$和$$b$$的梯度。
+
+**步骤四：**用下面的算式更新参数$$w$$和$$b$$：
+   $$
+   w = w - \eta \frac{\partial \delta}{\partial w}\tag{10}
+   $$
+
+   $$
+   b = b - \eta \frac{\partial \delta}{\partial b}\tag{11}
+   $$
+
+
+  * 注：$$\eta$$ 是学习速率*
+
+
+   **该反传播算式总结如下：**
+
+![backPro_4]({{ site.url }}/img/NN/backPro/backPro_4.png)
+
+​	可以结合博客《[基于感知机的手写数字识别神经网络](https://yuzy007.github.io/2019/01/23/PNN/)》中的代码一起加深理解。
+
+##  参考资料：
+
+- [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/chap1.html)
+- [【官方双语】深度学习之神经网络的结构 Part 1 ver 2.0](https://www.bilibili.com/video/av15532370)
+- [【官方双语】深度学习之梯度下降法 Part 2 ver 0.9 beta](https://www.bilibili.com/video/av16144388)
+- [【官方双语】深度学习之反向传播算法 上/下 Part 3 ver 0.9 beta](https://www.bilibili.com/video/av16577449)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
