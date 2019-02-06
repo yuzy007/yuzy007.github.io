@@ -1,13 +1,15 @@
 ---
 layout:     post
-title:      "反向传播算法如何⼯作"
-subtitle:   ""
+title:      "反向传播算法"
+subtitle:   "以感知机为例的反向传播过程"
 author:     "逸杯久"
 header-img: "img/post-bg-2019_1.jpg"
 catalog: true
 tags:
     - 神经网络
     - 感知机
+    - 反向传播
+    - backpropagation
     - Perceptrons
     - neural network
 ---
