@@ -394,4 +394,6 @@ Enter the regularization parameter, lambda (suggest: 5.0): 0.1
 
 
 
-​	
+## 参考资料：
+
+- [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/chap1.html)
