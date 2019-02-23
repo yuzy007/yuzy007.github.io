@@ -78,6 +78,7 @@ conda update -c anaconda --all
 ```shell
 # 添加conda的清华镜像，配置文件在C:\Users\用户名\.condarc
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
 
 # 设置搜索时显示通道地址
 conda config --set show_channel_urls yes
